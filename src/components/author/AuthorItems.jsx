@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Skeleton from "../UI/Skeleton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AuthorItems = ({ nft, author, loading }) => {
+  AOS.init();
+
   return (
     <div className="de_tab_content">
       <div className="tab-1">
@@ -35,6 +39,7 @@ const AuthorItems = ({ nft, author, loading }) => {
               ))
             : nft.map((item) => (
                 <div
+                  data-aos="fade-in"
                   className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
                   key={item.nftId}
                 >

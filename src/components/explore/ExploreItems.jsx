@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import ItemCard from "../UI/ItemCard";
 import Skeleton from "../UI/Skeleton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ExploreItems = () => {
+  AOS.init();
+
   const [exploreItems, setExploreItems] = useState([]);
   const [loadItems, setLoadItems] = useState(8);
   const [isLoading, setIsLoading] = useState(false);
@@ -74,6 +78,7 @@ const ExploreItems = () => {
             .map((exploreItem) => (
               <div
                 key={exploreItem.id}
+                data-aos="fade-in"
                 className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
                 style={{ display: "block", backgroundSize: "cover" }}
               >
