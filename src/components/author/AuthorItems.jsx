@@ -40,7 +40,7 @@ const AuthorItems = ({ nft, author, loading }) => {
                 >
                   <div className="nft__item">
                     <div className="author_list_pp">
-                      <Link to="">
+                      <Link to="#">
                         <img className="lazy" src={author.authorImage} alt="" />
                         <i className="fa fa-check"></i>
                       </Link>
@@ -63,7 +63,7 @@ const AuthorItems = ({ nft, author, loading }) => {
                           </div>
                         </div>
                       </div>
-                      <Link to="/item-details">
+                      <Link to={`/item-details/${item.nftId}`}>
                         <img
                           src={item.nftImage}
                           className="lazy nft__item_preview"
@@ -72,7 +72,7 @@ const AuthorItems = ({ nft, author, loading }) => {
                       </Link>
                     </div>
                     <div className="nft__item_info">
-                      <Link to="/item-details">
+                      <Link to={`/item-details/${item.nftId}`}>
                         <h4>{item.title}</h4>
                       </Link>
                       <div className="nft__item_price">{item.price} ETH</div>
