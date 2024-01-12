@@ -5,43 +5,47 @@ import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import Skeleton from "../UI/Skeleton";
 import ItemCard from "../UI/ItemCard";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const NewItems = () => {
+  AOS.init();
+
   const [newItems, setNewItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   async function fetchNewItems() {
     try {
       setIsLoading(true);
       const { data } = await axios.get(
         "https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems"
-        );
-        setNewItems(data);
-      } catch (error) {
-        console.error("Couldn't load", error);
-      } finally {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 2000);
-      }
+      );
+      setNewItems(data);
+    } catch (error) {
+      console.error("Couldn't load", error);
+    } finally {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
     }
-    
-    useEffect(() => {
-      fetchNewItems();
-    }, []);
+  }
 
-    const options = {
-      loop: true,
-      nav: true,
-      dots: false,
-      margin: 20,
-      responsive: {
-        1440: { items: 4 },
-        1024: { items: 3 },
-        768: { items: 2 },
-        375: { items: 1 },
-      },
-    };
+  useEffect(() => {
+    fetchNewItems();
+  }, []);
+
+  const options = {
+    loop: true,
+    nav: true,
+    dots: false,
+    margin: 20,
+    responsive: {
+      1440: { items: 4 },
+      1024: { items: 3 },
+      768: { items: 2 },
+      375: { items: 1 },
+    },
+  };
 
   return (
     <section id="section-items" className="no-bottom">
@@ -85,8 +89,8 @@ const NewItems = () => {
                   </div>
                 ))
               : newItems.map((newItem) => (
-                  <div key={newItem.id}>
-                    <ItemCard item={newItem} />
+                  <div data-aos="fade-up" key={newItem.id}>
+                    <ItemCard  item={newItem} />
                   </div>
                 ))}
           </OwlCarousel>

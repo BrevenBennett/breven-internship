@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const TopSellers = () => {
+  AOS.init();
+
   const [topSellers, setTopSellers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -58,7 +62,7 @@ const TopSellers = () => {
                     </li>
                   ))
                 : topSellers.map((topSeller) => (
-                    <li key={topSeller.id}>
+                    <li data-aos="fade-up" key={topSeller.id}>
                       <div className="author_list_pp">
                         <Link to={`/author/${topSeller.authorId}`}>
                           <img
