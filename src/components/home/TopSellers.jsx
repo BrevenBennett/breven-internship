@@ -19,7 +19,7 @@ const TopSellers = () => {
     } finally {
       setTimeout(() => {
         setIsLoading(false);
-      }, 3000);
+      }, 2000);
     }
   }
 
