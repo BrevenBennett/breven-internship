@@ -35,7 +35,7 @@ const HotCollections = () => {
     } finally {
       setTimeout(() => {
         setIsLoading(false);
-      }, 3000);
+      }, 2000);
     }
   }
 
